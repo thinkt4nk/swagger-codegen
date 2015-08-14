@@ -22,7 +22,7 @@ public class Python3ClientCodegen extends DefaultCodegen implements CodegenConfi
         apiTemplateFiles.put("api.mustache", ".py");
         templateDir = "python3";
 
-        apiPackage = module;
+        apiPackage = module + "-python";
         modelPackage = module + ".models";
 
         languageSpecificPrimitives.clear();

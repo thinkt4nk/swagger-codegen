@@ -385,7 +385,7 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                 buf.append(capitalize(part));
             }
         }
-        return buf.toString().replaceAll("[^a-zA-Z ]", "");
+        return buf.toString().replaceFirst("Api", "").replaceFirst("v\\d+", "").replaceAll("[^a-zA-Z ]", "");
     }
 
     public Map<String, Object> processOperations(CodegenConfig config, String tag, List<CodegenOperation> ops) {
