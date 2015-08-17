@@ -61,7 +61,6 @@ public class PythonClientCodegen extends DefaultCodegen implements CodegenConfig
 
         additionalProperties.put("module", module);
 
-        supportingFiles.add(new SupportingFile("README.mustache", eggPackage, "README.md"));
         supportingFiles.add(new SupportingFile("setup.mustache", eggPackage, "setup.py"));
         supportingFiles.add(new SupportingFile("api_client.mustache", invokerPackage, "api_client.py"));
         supportingFiles.add(new SupportingFile("rest.mustache", invokerPackage, "rest.py"));
