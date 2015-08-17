@@ -8,3 +8,9 @@ from __future__ import absolute_import
 {{/apis}}{{/apiInfo}}
 # import ApiClient
 from .api_client import ApiClient
+
+__all__ = [
+    'ApiClient',{{#models}}
+    '{{model.classname}}',{{/models}}{{#apiInfo}}{{#apis}}
+    '{{classname}}',{{/apis}}{{/apiInfo}}
+]

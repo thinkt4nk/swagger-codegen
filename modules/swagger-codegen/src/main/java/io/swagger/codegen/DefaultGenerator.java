@@ -131,7 +131,7 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                         String suffix = config.modelTemplateFiles().get(templateName);
                         String filename = config.modelFileFolder() + File.separator + config.toModelFilename(name) + suffix;
                         String template = readTemplate(config.templateDir() + File.separator + templateName);
-                        Template tmpl = Mustache.compiler()
+                        Template tmpl = Mustache.compiler().emptyStringIsFalse(true)
                                 .withLoader(new Mustache.TemplateLoader() {
                                     public Reader getTemplate(String name) {
                                         return getTemplateReader(config.templateDir() + File.separator + name + ".mustache");
@@ -183,7 +183,7 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                     }
 
                     String template = readTemplate(config.templateDir() + File.separator + templateName);
-                    Template tmpl = Mustache.compiler()
+                    Template tmpl = Mustache.compiler().emptyStringIsFalse(true)
                             .withLoader(new Mustache.TemplateLoader() {
                                 public Reader getTemplate(String name) {
                                     return getTemplateReader(config.templateDir() + File.separator + name + ".mustache");
@@ -248,7 +248,7 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
 
                 if (support.templateFile.endsWith("mustache")) {
                     String template = readTemplate(config.templateDir() + File.separator + support.templateFile);
-                    Template tmpl = Mustache.compiler()
+                    Template tmpl = Mustache.compiler().emptyStringIsFalse(true)
                             .withLoader(new Mustache.TemplateLoader() {
                                 public Reader getTemplate(String name) {
                                     return getTemplateReader(config.templateDir() + File.separator + name + ".mustache");
