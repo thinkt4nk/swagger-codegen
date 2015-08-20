@@ -39,6 +39,7 @@ public class PythonClientCodegen extends DefaultCodegen implements CodegenConfig
         languageSpecificPrimitives.add("bool");
         languageSpecificPrimitives.add("str");
         languageSpecificPrimitives.add("datetime");
+        languageSpecificPrimitives.add("dict");
 
         typeMapping.clear();
         typeMapping.put("integer", "int");
@@ -46,7 +47,8 @@ public class PythonClientCodegen extends DefaultCodegen implements CodegenConfig
         typeMapping.put("long", "int");
         typeMapping.put("double", "float");
         typeMapping.put("array", "list");
-        typeMapping.put("map", "map");
+        typeMapping.put("map", "dict");
+        typeMapping.put("object", "dict");
         typeMapping.put("boolean", "bool");
         typeMapping.put("string", "str");
         typeMapping.put("date", "datetime");
