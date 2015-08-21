@@ -35,7 +35,7 @@ class {{classname}}(AbstractBaseApi):
             self.api_client = api_client
 {{#operation}}
 
-    def {{nickname}}(self, {{#allParams}}{{#required}}{{paramName}}, {{/required}}{{/allParams}}**kwargs):
+    def {{nickname}}(self, {{#allParams}}{{#required}}{{paramName}}, {{/required}}{{/allParams}}content_type=None, **kwargs):
         """
         {{{summary}}}
         {{{notes}}}
@@ -120,8 +120,9 @@ class {{classname}}(AbstractBaseApi):
             del header_params['Accept']
 
         # HTTP header `Content-Type`
-        content_type = [{{#consumes}}'{{mediaType}}'{{#hasMore}}, {{/hasMore}}{{/consumes}}]
-        content_type = self.api_client.select_header_content_type(content_type)
+        content_types = [{{#consumes}}'{{mediaType}}'{{#hasMore}}, {{/hasMore}}{{/consumes}}]
+        if content_type is None or content_type not in content_types:
+            content_type = self.api_client.select_header_content_type(content_types)
         header_params['Content-Type'] = content_type
 
         response = self.api_client.call_api(
