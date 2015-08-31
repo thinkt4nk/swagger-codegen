@@ -35,7 +35,12 @@ class {{classname}}(AbstractBaseApi):
             self.api_client = api_client
 {{#operation}}
 
-    def {{nickname}}(self, {{#allParams}}{{#required}}{{paramName}}, {{/required}}{{/allParams}}content_type=None, **kwargs):
+    def {{nickname}}(
+        self,{{#allParams}}{{#required}}
+        {{paramName}},{{/required}}{{/allParams}}
+        content_type=None,
+        **kwargs
+    ):
         """
         {{{summary}}}
         {{{notes}}}
@@ -44,10 +49,6 @@ class {{classname}}(AbstractBaseApi):
 {{/allParams}}
         :return: {{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}None{{/returnType}}
         """
-{{#allParams}}{{#required}}
-        # verify the required parameter '{{paramName}}' is set
-        if {{paramName}} is None:
-            raise ValueError("Missing the required parameter `{{paramName}}` when calling `{{nickname}}`"){{/required}}{{/allParams}}
         all_params = [{{#allParams}}
             '{{paramName}}',{{/allParams}}
         ]
